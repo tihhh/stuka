@@ -1,4 +1,4 @@
-# Flask Web Application
+# Stuka
 
 Web application made with Flask and Bootstrap, using SQLite for database.
 
