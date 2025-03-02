@@ -1,37 +1,6 @@
 # Flask Web Application
 
-A web application built with Flask, featuring user authentication and database integration.
-
-## Setup
-
-1. Clone the repository
-```bash
-git clone <your-repository-url>
-cd <repository-name>
-```
-
-2. Create a virtual environment and activate it
-```bash
-python -m venv venv
-# On Windows
-venv\Scripts\activate
-# On Unix or MacOS
-source venv/bin/activate
-```
-
-3. Install dependencies
-```bash
-pip install flask flask-sqlalchemy python-dotenv
-```
-
-4. Set up environment variables
-- Copy `.env.example` to `.env`
-- Update the `FLASK_SECRET_KEY` in `.env` with your own secret key
-
-5. Run the application
-```bash
-python main.py
-```
+Web application made with Flask and Bootstrap, using SQLite for database.
 
 ## Features
 - User authentication (login/signup)
