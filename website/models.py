@@ -14,4 +14,11 @@ class User(db.Model, UserMixin):
     password = db.Column(db.String(150))
     username = db.Column(db.String(150))
     notes = db.relationship('Note')
+    messages = db.relationship('Message')
 
+class Message(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    content = db.Column(db.String(1000))
+    date = db.Column(db.DateTime(timezone=True), default=func.now())
+    user_id = db.Column(db.Integer, db.ForeignKey('user.id'))
+    sender = db.Column(db.Boolean, default=False) #False means the message is from the user, True means the message is from the bot
