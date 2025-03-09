@@ -22,3 +22,10 @@ class Message(db.Model):
     date = db.Column(db.DateTime(timezone=True), default=func.now())
     user_id = db.Column(db.Integer, db.ForeignKey('user.id'))
     sender = db.Column(db.Boolean, default=False) #False means the message is from the user, True means the message is from the bot
+    thread_id = db.Column(db.Integer, db.ForeignKey('thread.id'))
+
+class Thread(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    date = db.Column(db.DateTime(timezone=True), default=func.now())
+    user_id = db.Column(db.Integer, db.ForeignKey('user.id'))
+    messages = db.relationship('Message')

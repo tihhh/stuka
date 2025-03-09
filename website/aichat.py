@@ -15,6 +15,8 @@ def chat():
         new_message = Message(content=message, user_id=current_user.id, sender=True)
         db.session.add(new_message)
         db.session.commit()
+
+        
     
     messages = Message.query.order_by(Message.date).all()
     
