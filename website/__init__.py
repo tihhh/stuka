@@ -21,10 +21,12 @@ def create_app():
     from .views import views
     from .auth import auth
     from .aichat import aichat
+    from .threads import threads
 
     app.register_blueprint(views, url_prefix='/')
     app.register_blueprint(auth, url_prefix='/')
     app.register_blueprint(aichat, url_prefix='/')
+    app.register_blueprint(threads, url_prefix='/')
 
     from .models import User, Note
 

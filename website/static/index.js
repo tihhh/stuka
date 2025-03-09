@@ -9,3 +9,7 @@ function deleteNote(noteId) {
         window.location.href = "/";
     });
 }
+
+function createThread() {
+    window.location.href = "/chat"
+}
