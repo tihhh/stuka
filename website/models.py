@@ -14,18 +14,20 @@ class User(db.Model, UserMixin):
     password = db.Column(db.String(150))
     username = db.Column(db.String(150))
     notes = db.relationship('Note')
-    messages = db.relationship('Message')
-
-class Message(db.Model):
-    id = db.Column(db.Integer, primary_key=True)
-    content = db.Column(db.String(1000))
-    date = db.Column(db.DateTime(timezone=True), default=func.now())
-    user_id = db.Column(db.Integer, db.ForeignKey('user.id'))
-    sender = db.Column(db.Boolean, default=False) #False means the message is from the user, True means the message is from the bot
-    thread_id = db.Column(db.Integer, db.ForeignKey('thread.id'))
+    threads = db.relationship('Thread', back_populates='user')
 
 class Thread(db.Model):
     id = db.Column(db.Integer, primary_key=True)
-    date = db.Column(db.DateTime(timezone=True), default=func.now())
+    title = db.Column(db.String(200))
+    created_date = db.Column(db.DateTime(timezone=True), default=func.now())
     user_id = db.Column(db.Integer, db.ForeignKey('user.id'))
-    messages = db.relationship('Message')
+    user = db.relationship('User', back_populates='threads')
+    messages = db.relationship('Message', back_populates='thread', cascade='all, delete-orphan')
+
+class Message(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    content = db.Column(db.String(10000))
+    is_ai = db.Column(db.Boolean, default=False)
+    date = db.Column(db.DateTime(timezone=True), default=func.now())
+    thread_id = db.Column(db.Integer, db.ForeignKey('thread.id'))
+    thread = db.relationship('Thread', back_populates='messages')

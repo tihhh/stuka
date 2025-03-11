@@ -1,7 +1,7 @@
 {% extends "base.html" %}{% block title %}Home{% endblock %}
 {% block content %}
 <li class="list-group list-group-flush" id="messages">
-    {% for message in user.messages %}
+    {% for message in thread_id.messages %}
     <li class="list-group-item">
         {{ message.content }} - {{ message.date }}
     </li>

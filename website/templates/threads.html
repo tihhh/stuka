@@ -3,9 +3,9 @@
 <h1 align="center">Threads</h1>
 <br/>
 <ul class="list-group list-group-flush" id="notes">
-    {% for note in user.notes %}
+    {% for thread in threads %}
     <li class="list-group-item">
-        {{ note.data }}
+        {{ thread.data }}
     </li>
     {% endfor %}
     <button type="button" class="btn btn-primary" onclick="createThread()">
